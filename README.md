@@ -21,6 +21,28 @@ Jira × Figma × Copilot UX Skill 工作区，用于帮助 UX 设计师从 Jira 
 
 ## 设计师快速开始
 
+### 0. 可以直接发给 AI Agent 的初始化指令
+
+如果你希望让 AI Agent 帮你从 clone 到配置完整走一遍，可以直接复制下面这段话：
+
+```text
+请帮我初始化这个 UX skill 仓库：https://github.com/PDCN-YingfeiChen/jira-figma-copilot-ux-skills
+
+请按 README 完成从 clone 到配置的全流程：
+1. clone 仓库并用 VS Code 工作区方式打开；
+2. 指导我创建 Atlassian API Token；
+3. 帮我复制 mcp-servers/atlassian-server/.env.example 为 .env；
+4. 等我填入 ATLASSIAN_EMAIL 和 ATLASSIAN_API_TOKEN 后，帮我检查 .env 是否存在但不要读取或输出 token；
+5. 运行 mcp-servers/atlassian-server 下的 npm install；
+6. 确认 .vscode/mcp.json 已注册 atlassian 和 figma；
+7. 指导我 Reload VS Code / Restart MCP servers；
+8. 用一个 Jira 卡号测试 atlassian MCP 是否能读取；
+9. 用一个 Figma node 链接测试 Figma MCP 是否能读取；
+10. 最后告诉我如何输入 Jira + Figma 来生成 output/<jira-key>-design-brief.md 和 output/<jira-key>-ux-review.md。
+
+注意：不要把任何 token 写进 Markdown、聊天记录或 Git 提交里。
+```
+
 ### 1. Clone 仓库
 
 使用仓库 owner 分享的地址 clone。
