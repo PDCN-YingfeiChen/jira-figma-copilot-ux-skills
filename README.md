@@ -1,56 +1,59 @@
 # jira-figma-copilot-ux-skills
 
-Jira to Figma UX skills and designer trial materials.
+Jira × Figma × Copilot UX Skill 工作区，用于帮助 UX 设计师从 Jira 需求和 Figma 设计中生成两类中文文档：
 
-This workspace separates formal UX skills from collaboration and trial materials.
+- 设计过程简报：用于需求理解、流程拆解和设计起稿。
+- UX 评审报告：用于设计走查、交付前检查，以及给 PM/PO、FE/BE、QA 的行动项。
 
-## Who This Is For
+本仓库把正式 UX skill 和试用协作材料分开管理。
 
-This repository is for UX designers who want to use VS Code / Copilot / Agent workflows to:
+## 适用对象
 
-- read Jira requirements,
-- inspect Figma designs,
-- turn Jira requirements into a design brief,
-- compare Jira and Figma,
-- generate UX review notes for PM/PO, FE/BE, and QA.
+本仓库适合希望在 VS Code / Copilot / Agent 中完成以下工作的 UX 设计师：
 
-The default output language is Chinese.
+- 读取 Jira 需求；
+- 读取或检查 Figma 设计；
+- 将 Jira 需求拆解成设计简报；
+- 对比 Jira 与 Figma 的覆盖情况；
+- 生成给 PM/PO、FE/BE、QA 使用的 UX 评审结论。
 
-## Quick Start For Designers
+默认输出语言为中文。
 
-### 1. Clone this repository
+## 设计师快速开始
 
-Use the repository URL shared by the owner.
+### 1. Clone 仓库
 
-SSH:
+使用仓库 owner 分享的地址 clone。
+
+SSH：
 
 ```bash
 git clone git@github.com:PDCN-YingfeiChen/jira-figma-copilot-ux-skills.git
 ```
 
-HTTPS:
+HTTPS：
 
 ```bash
 git clone https://github.com/PDCN-YingfeiChen/jira-figma-copilot-ux-skills.git
 ```
 
-Then open the folder in VS Code.
+然后用 VS Code 打开该文件夹。
 
-### 2. Prepare Jira access
+### 2. 准备 Jira 访问权限
 
-Create an Atlassian API token:
+先创建 Atlassian API token：
 
 ```text
 https://id.atlassian.com/manage-profile/security/api-tokens
 ```
 
-Copy the env template:
+复制环境变量模板：
 
 ```bash
 cp mcp-servers/atlassian-server/.env.example mcp-servers/atlassian-server/.env
 ```
 
-Fill in:
+填写：
 
 ```env
 ATLASSIAN_HOST=porschedigital.atlassian.net
@@ -58,9 +61,9 @@ ATLASSIAN_EMAIL=your-email@porsche.digital
 ATLASSIAN_API_TOKEN=your-api-token
 ```
 
-Never commit `.env`.
+注意：不要提交 `.env`。
 
-### 3. Install the Jira MCP server dependencies
+### 3. 安装 Jira MCP server 依赖
 
 ```bash
 cd mcp-servers/atlassian-server
@@ -68,78 +71,78 @@ npm install
 cd ../..
 ```
 
-### 4. Refresh VS Code MCP
+### 4. 刷新 VS Code MCP
 
-This repo includes workspace MCP config:
+本仓库已经包含 workspace 级 MCP 配置：
 
 ```text
 .vscode/mcp.json
 ```
 
-It registers:
+其中注册了：
 
-- `atlassian` for Jira access
-- `figma` for Figma MCP access
+- `atlassian`：用于读取 Jira；
+- `figma`：用于读取 Figma MCP。
 
-After installing dependencies and filling `.env`, reload VS Code:
+配置 `.env` 并安装依赖后，重载 VS Code：
 
 ```text
 Cmd + Shift + P -> Developer: Reload Window
 ```
 
-If your VS Code has MCP commands, you can also use:
+如果你的 VS Code 支持 MCP 命令，也可以使用：
 
 ```text
 MCP: Restart Servers
 MCP: List Servers
 ```
 
-### 5. Test Jira access
+### 5. 测试 Jira 是否可读
 
-In Copilot / Agent chat:
+在 Copilot / Agent chat 中输入：
 
 ```text
 Use the atlassian MCP server to read Jira issue CARTS-7329.
 ```
 
-If it works, try your target Jira issue.
+如果可以读到，再换成你的目标 Jira 卡号。
 
-### 6. Test Figma access
+### 6. 测试 Figma 是否可读
 
-Open Figma in browser or desktop and make sure your account can access the file.
+确保你的 Figma 账号可以打开目标文件或节点链接。
 
-In Copilot / Agent chat:
+在 Copilot / Agent chat 中输入：
 
 ```text
 Use the Figma MCP server to inspect this Figma link: <figma-url>.
 ```
 
-If Figma asks for authorization, follow the VS Code/Figma authorization prompt.
+如果 Figma 要求授权，按 VS Code / Figma 的授权提示完成即可。
 
-### 7. Run the UX workflow
+### 7. 运行完整 UX workflow
 
-Use this prompt:
+可以使用下面的 prompt：
 
 ```text
 Jira: CARTS-xxxx
 Figma: https://www.figma.com/design/...
 
-Please run the full Jira × Figma UX skill workflow.
-Generate:
+请完整运行 Jira × Figma UX skill workflow。
+生成：
 1. output/<jira-key>-design-brief.md
 2. output/<jira-key>-ux-review.md
 
-Use Chinese.
-Keep findings traceable to Jira or Figma evidence.
-If reading Jira or Figma fails, stop and explain what failed.
+使用中文输出。
+所有结论都需要能追溯到 Jira 或 Figma 证据。
+如果 Jira 或 Figma 读取失败，请停止并说明失败原因。
 ```
 
-## Structure
+## 仓库结构
 
 ```text
 jira-figma-copilot-ux-skills/
-├── skills/ux/                         # Formal UX skill source files
-├── training/ux-skill-trial/           # Designer trial and collaboration materials
+├── skills/ux/                         # 正式 UX skill 源文件
+├── training/ux-skill-trial/           # 设计师试用、协作和反馈材料
 │   ├── QUICK_START.md
 │   ├── TRANSFER_GUIDE.md
 │   ├── feedback-form.md
@@ -147,10 +150,11 @@ jira-figma-copilot-ux-skills/
 │   ├── output-examples/
 │   ├── prompts/
 │   └── dev-notes/
-└── skill-role-map.yaml                # Role mapping for the formal skill files
+├── mcp-servers/atlassian-server/      # 本地 Jira/Atlassian MCP server
+└── skill-role-map.yaml                # UX skill 角色映射
 ```
 
-## Formal UX Skills
+## 正式 UX Skills
 
 - `jira-figma-workflow-base.md`
 - `jira-requirement-extraction.md`
@@ -159,51 +163,55 @@ jira-figma-copilot-ux-skills/
 - `jira-figma-comparison.md`
 - `ux-gap-report-generator.md`
 
-These files are intended to be reviewed and later copied into `documents/skills/ux/` in the carsales workspace.
+这些文件是正式 skill 源文件。稳定后可以复制到 carsales 工作区的：
 
-## Collaboration Materials
+```text
+documents/skills/ux/
+```
 
-Use `training/ux-skill-trial/` for designer onboarding, mock validation, feedback collection, and future API-mode notes.
+## 试用与协作材料
 
-The training materials are intentionally kept outside `skills/ux/` so the formal skill folder stays clean.
+`training/ux-skill-trial/` 用于设计师 onboarding、mock validation、反馈收集和未来 API 模式说明。
 
-## Output Format
+这些材料不会放进 `skills/ux/`，这样正式 skill 文件夹可以保持干净。
 
-The workflow generates two Chinese Markdown reports by default:
+## 输出格式
+
+workflow 默认生成两份中文 Markdown：
 
 ```text
 output/<jira-key>-design-brief.md
 output/<jira-key>-ux-review.md
 ```
 
-- `design-brief` is for design-process work: requirement extraction, acceptance criteria interpretation, user flow, states, and Figma draft guidance.
-- `ux-review` is for review and handoff: Jira-Figma gaps, PM/PO clarifications, FE/BE implementation notes, QA test notes, risks, and a suggested Jira comment.
+- `design-brief`：用于设计过程，包括需求提取、验收条件理解、User Flow、状态清单和 Figma 起稿提示。
+- `ux-review`：用于评审和交付，包括 Jira-Figma 差异、PM/PO 需要补充的内容、FE/BE 实现注意事项、QA 测试注意事项、风险和建议贴回 Jira 的评论。
 
-## Security Notes
+## 安全注意事项
 
-- Do not commit `.env` files.
-- Do not commit real Jira or Figma tokens.
-- Do not paste tokens into Markdown files, Jira comments, screenshots, or chat messages.
-- Mock mode and real API mode must stay clearly separated.
-- Real API mode must stop on fetch failure and must not silently fall back to mock data.
+- 不要提交 `.env` 文件。
+- 不要提交真实 Jira 或 Figma token。
+- 不要把 token 粘贴到 Markdown、Jira 评论、截图或聊天消息里。
+- Mock mode 和 Real API mode 必须明确区分。
+- Real API mode 如果读取失败，必须停止并说明原因，不能静默回退到 mock 数据。
 
-## VS Code MCP Setup
+## VS Code MCP 配置说明
 
-This repository includes a local Atlassian MCP server for Jira access:
+本仓库包含一个本地 Atlassian MCP server，用于读取 Jira：
 
 ```text
 mcp-servers/atlassian-server/
 ```
 
-### 1. Configure Jira credentials
+### 1. 配置 Jira 凭证
 
-Copy the example env file:
+复制模板：
 
 ```bash
 cp mcp-servers/atlassian-server/.env.example mcp-servers/atlassian-server/.env
 ```
 
-Fill in:
+填写：
 
 ```env
 ATLASSIAN_HOST=porschedigital.atlassian.net
@@ -211,31 +219,31 @@ ATLASSIAN_EMAIL=your-email@porsche.digital
 ATLASSIAN_API_TOKEN=your-api-token
 ```
 
-Do not commit `.env`.
+不要提交 `.env`。
 
-### 2. Install server dependencies
+### 2. 安装依赖
 
 ```bash
 cd mcp-servers/atlassian-server
 npm install
 ```
 
-### 3. Use in VS Code
+### 3. 在 VS Code 中使用
 
-The workspace MCP config is stored in:
+workspace MCP 配置位于：
 
 ```text
 .vscode/mcp.json
 ```
 
-It registers:
+它注册了：
 
-- `atlassian` for Jira access
-- `figma` for Figma MCP access
+- `atlassian`：读取 Jira；
+- `figma`：读取 Figma MCP。
 
-After installing dependencies and filling `.env`, restart VS Code or refresh MCP servers.
+安装依赖并填写 `.env` 后，重启 VS Code 或刷新 MCP servers。
 
-### 4. Test prompts
+### 4. 测试 prompt
 
 ```text
 Use the atlassian MCP server to read Jira issue CARTS-1234.
@@ -245,27 +253,27 @@ Use the atlassian MCP server to read Jira issue CARTS-1234.
 Use the Figma MCP server to inspect this Figma link: <url>.
 ```
 
-## Troubleshooting
+## 常见问题
 
-### Jira MCP cannot read the issue
+### Jira MCP 读不到卡片
 
-Check:
+请检查：
 
-- `mcp-servers/atlassian-server/.env` exists.
-- `ATLASSIAN_HOST` does not include `https://`.
-- The Atlassian token belongs to the same account that can open the Jira issue in browser.
-- You ran `npm install` inside `mcp-servers/atlassian-server`.
-- VS Code was reloaded after configuration.
+- `mcp-servers/atlassian-server/.env` 是否存在；
+- `ATLASSIAN_HOST` 是否没有包含 `https://`；
+- Atlassian token 是否属于能在浏览器打开该 Jira issue 的账号；
+- 是否已经在 `mcp-servers/atlassian-server` 下运行过 `npm install`；
+- 配置后是否重载过 VS Code。
 
-### Figma MCP cannot inspect the file
+### Figma MCP 读不到文件
 
-Check:
+请检查：
 
-- Your Figma account can open the file and node link.
-- VS Code has loaded `.vscode/mcp.json`.
-- You completed any Figma MCP authorization prompt.
-- If a node link fails, provide the exact node URL or node id.
+- 你的 Figma 账号是否能打开该文件或节点链接；
+- VS Code 是否已经加载 `.vscode/mcp.json`；
+- 是否完成了 Figma MCP 授权；
+- 如果完整链接失败，可以提供精确 node URL 或 node id。
 
-### Output files are not pushed to GitHub
+### 为什么 output 文件没有推到 GitHub？
 
-Generated reports under `output/` are local working files and are ignored by Git by default. This prevents trial reports or sensitive project findings from being committed accidentally.
+`output/` 下生成的报告是本地工作文件，默认被 Git 忽略。这样可以避免把试用报告、项目结论或敏感信息误提交到 GitHub。
