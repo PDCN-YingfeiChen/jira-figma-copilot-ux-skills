@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "atlassian": {
+      "command": "node",
+      "args": ["./mcp-servers/atlassian-server/index.js"]
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}
