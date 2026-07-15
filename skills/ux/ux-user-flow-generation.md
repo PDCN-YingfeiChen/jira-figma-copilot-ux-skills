@@ -25,38 +25,22 @@ Turn a requirement summary into structured interaction logic.
 
 ## Output
 
-Generate `output/user-flow.md`:
+Write the following sections into `output/<jira-key>-design-brief.md`:
 
 ```md
-# User Flow
+## 用户流程 / 配置流程
 
-## Source Status
-
-## Feature Name
-
-## Entry Points
-
-## Main Flow
-| Step | Actor | Action | System Response | Related Requirement |
+### 主流程
+| Step | 角色 | 操作 | 系统反馈 | 关联需求 |
 |---|---|---|---|---|
 
-## Alternative Flows
+### 异常流程
+| 场景 | 触发条件 | 系统反馈 | 设计状态 |
+|---|---|---|---|
 
-## Error Flows
-
-## Empty States
-
-## Loading States
-
-## Success States
-
-## Disabled States
-
-## Required Screens
-
-## Required Components
-
-## Open Questions
+### 状态清单
+| 模块 | 必备状态 |
+|---|---|
 ```
 
 ## Prompt

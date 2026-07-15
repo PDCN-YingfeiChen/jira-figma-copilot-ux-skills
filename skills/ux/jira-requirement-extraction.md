@@ -29,48 +29,43 @@ Extract UX-relevant requirements from Jira issue content and convert them into a
 
 ## Output
 
-Generate `output/requirement.md`:
+Write the following sections into `output/<jira-key>-design-brief.md`:
 
 ```md
-# Requirement Summary
+## 需求提取
 
-## Source Status
+### Story 信息
 - Mode:
 - Source type:
 - Validity:
 
-## Issue
+### 背景
+
+### 目标用户
+
+### 用户问题
+
+### UX 目标
+
+## 功能需求拆解
+| ID | 需求 | 来源 | 优先级 |
+|---|---|---|---|
+
+## 验收条件整理
+| ID | 验收条件 | 设计含义 |
+|---|---|---|
+
+## 待确认问题
+```
+
+Required issue metadata:
+
+```text
 - Key:
 - Title:
 - Status:
 - Priority:
 - Labels:
-
-## Business Background
-
-## User Problem
-
-## Target User
-
-## UX Goal
-
-## Functional Requirements
-| ID | Requirement | Source | Priority |
-|---|---|---|---|
-
-## Acceptance Criteria
-| ID | Acceptance Criterion | Source |
-|---|---|---|
-
-## Constraints
-
-## Dependencies
-
-## Risks
-
-## Open Questions
-
-## Notes for PM / Engineering
 ```
 
 ## Prompt

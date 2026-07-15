@@ -39,28 +39,16 @@ Figma:
 
 ## Output
 
-Generate `output/compare.md`:
+Write the following sections into `output/<jira-key>-ux-review.md`:
 
 ```md
-# Jira-Figma Comparison
+## Figma 证据摘要
+### 已覆盖的设计证据
+### 缺失或证据较弱的设计内容
 
-## Source Status
-
-## Overall Status
-
-## Requirement Coverage Table
-| Jira Requirement | Jira Source | Figma Evidence | Status | Severity | Recommendation |
+## Jira-Figma 差异分析
+| 需求 | Jira 来源 | Figma 证据 | 状态 | 严重程度 | 建议动作 |
 |---|---|---|---|---|---|
-
-## Missing Items
-
-## Partially Covered Items
-
-## Conflicts
-
-## Needs Clarification
-
-## Recommended Actions
 ```
 
 ## Status Labels

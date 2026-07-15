@@ -15,34 +15,20 @@ Convert requirements and user flow into a Figma-oriented design prompt for wiref
 
 ## Output
 
-Generate `output/figma-prompt.md`:
+Write the following sections into `output/<jira-key>-design-brief.md`:
 
 ```md
-# Figma Design Prompt
+## Figma 起稿 / 补稿提示
 
-## Source Status
+### B 端配置面板
 
-## Feature Context
+### C 端展示参考
 
-## Design Goal
+## 组件建议
+| 模块 | 组件建议 |
+|---|---|
 
-## Required Screens
-
-## Frame Hierarchy
-
-## Screen-by-Screen Guidance
-
-## Component Suggestions
-
-## Interaction States
-
-## Edge Cases
-
-## Accessibility Notes
-
-## Developer Handoff Notes
-
-## Open Questions
+## 设计前检查清单
 ```
 
 ## Prompt

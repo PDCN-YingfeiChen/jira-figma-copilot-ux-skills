@@ -37,6 +37,18 @@ Use `training/ux-skill-trial/` for designer onboarding, mock validation, feedbac
 
 The training materials are intentionally kept outside `skills/ux/` so the formal skill folder stays clean.
 
+## Output Format
+
+The workflow generates two Chinese Markdown reports by default:
+
+```text
+output/<jira-key>-design-brief.md
+output/<jira-key>-ux-review.md
+```
+
+- `design-brief` is for design-process work: requirement extraction, acceptance criteria interpretation, user flow, states, and Figma draft guidance.
+- `ux-review` is for review and handoff: Jira-Figma gaps, PM/PO clarifications, FE/BE implementation notes, QA test notes, risks, and a suggested Jira comment.
+
 ## Security Notes
 
 - Do not commit `.env` files.

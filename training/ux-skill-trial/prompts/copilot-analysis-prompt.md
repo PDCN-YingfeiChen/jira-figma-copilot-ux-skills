@@ -15,14 +15,16 @@ or equivalent real Jira/Figma content if available.
 
 ## Tasks
 
-Generate:
+Generate two Chinese Markdown reports:
 
 ```text
-# Requirement Summary
-# User Flow
-# Figma Design Prompt
-# Jira-Figma Gap Report
+output/<jira-key>-design-brief.md
+output/<jira-key>-ux-review.md
 ```
+
+`design-brief` should contain requirement extraction, acceptance criteria interpretation, user flow, state checklist, and Figma draft guidance.
+
+`ux-review` should contain Jira-Figma gap analysis, PM/PO required clarifications, FE/BE implementation notes, QA test notes, UX risks, recommended next steps, and a suggested Jira comment.
 
 ## Rules
 
@@ -34,6 +36,7 @@ Generate:
 - Make each comparison item traceable to Jira or Figma evidence.
 - If the input is mock data, clearly mark the output as `Mock validation`.
 - If the input is placeholder content, stop and explain what is missing.
+- Default output language is Chinese unless the user asks otherwise.
 
 ## Status Labels
 

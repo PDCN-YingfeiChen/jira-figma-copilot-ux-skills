@@ -20,10 +20,8 @@ prompts/copilot-analysis-prompt.md
 Please use mock/mock-jira-issue.md and mock/mock-figma-content.md as the input sources.
 
 Then follow prompts/copilot-analysis-prompt.md to generate:
-1. Requirement Summary
-2. User Flow
-3. Figma Design Prompt
-4. Jira-Figma Gap Report
+1. `output/<jira-key>-design-brief.md`
+2. `output/<jira-key>-ux-review.md`
 
 Use Jira as the source of truth for requirements.
 Use Figma as the source of truth for design implementation.

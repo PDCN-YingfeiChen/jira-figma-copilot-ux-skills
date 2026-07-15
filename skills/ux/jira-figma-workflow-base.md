@@ -41,13 +41,11 @@ Gap report
 Expected outputs:
 
 ```text
-output/
-├─ requirement.md
-├─ user-flow.md
-├─ figma-prompt.md
-├─ compare.md
-└─ final-ux-analysis.md
+output/<jira-key>-design-brief.md
+output/<jira-key>-ux-review.md
 ```
+
+Use `design-brief` for design-process work before or during design: requirement extraction, acceptance criteria interpretation, user flow, states, and Figma prompt. Use `ux-review` after Figma exists: Jira-Figma comparison, stakeholder clarifications, engineering notes, QA notes, risks, and Jira comment.
 
 ## 3. Source of Truth
 
@@ -279,10 +277,9 @@ Tasks:
 1. Identify whether the current input is real API data, mock data, or placeholder data.
 2. If the input is placeholder, stop and explain what is missing.
 3. If the input is valid, extract UX requirements from Jira.
-4. Generate a user flow.
-5. Generate a Figma-oriented design prompt.
-6. Compare Jira requirements with Figma content.
-7. Generate a gap report.
+4. Generate a design brief with requirement decomposition, user flow, states, and Figma draft guidance.
+5. Compare Jira requirements with Figma content.
+6. Generate a UX review report organized by PM/PO, FE/BE, and QA action items.
 
 Use Jira as the source of truth for requirements.
 Use Figma as the source of truth for design implementation.
@@ -290,6 +287,7 @@ Do not invent missing requirements.
 Do not invent Figma evidence.
 Mark unclear items as Needs clarification.
 Make every finding traceable to Jira or Figma evidence.
+Default output language is Chinese.
 ```
 
 ## 13. Acceptance Criteria for Level 0
