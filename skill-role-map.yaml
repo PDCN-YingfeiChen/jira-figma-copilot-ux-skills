@@ -1,0 +1,26 @@
+version: "2026-07-15"
+description: UX skill role mapping for Jira-Figma-Copilot workflow.
+roles:
+  ux:
+    label: UI/UX
+    review_owners:
+      - Yingfei Chen
+    skills:
+      - name: jira-figma-workflow-base
+        source_path: skills/ux/jira-figma-workflow-base.md
+        status: draft
+      - name: jira-requirement-extraction
+        source_path: skills/ux/jira-requirement-extraction.md
+        status: draft
+      - name: ux-user-flow-generation
+        source_path: skills/ux/ux-user-flow-generation.md
+        status: draft
+      - name: figma-design-prompt-generation
+        source_path: skills/ux/figma-design-prompt-generation.md
+        status: draft
+      - name: jira-figma-comparison
+        source_path: skills/ux/jira-figma-comparison.md
+        status: draft
+      - name: ux-gap-report-generator
+        source_path: skills/ux/ux-gap-report-generator.md
+        status: draft
