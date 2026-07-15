@@ -5,7 +5,7 @@ Jira × Figma × Copilot UX Skill 工作区，用于帮助 UX 设计师从 Jira 
 - 设计过程简报：用于需求理解、流程拆解和设计起稿。
 - UX 评审报告：用于设计走查、交付前检查，以及给 PM/PO、FE/BE、QA 的行动项。
 
-本仓库把正式 UX skill 和试用协作材料分开管理。
+本仓库把正式 UX skill、试用协作材料和本地 MCP server 分开管理。
 
 ## 适用对象
 
@@ -39,13 +39,31 @@ git clone https://github.com/PDCN-YingfeiChen/jira-figma-copilot-ux-skills.git
 
 然后用 VS Code 打开该文件夹。
 
-### 2. 准备 Jira 访问权限
+### 2. 创建 Atlassian API Token
 
-先创建 Atlassian API token：
+这个 token 用于让本地 MCP server 读取 Jira 内容。
 
-```text
-https://id.atlassian.com/manage-profile/security/api-tokens
-```
+1. 打开 Atlassian 账号安全页面：
+
+   ```text
+   https://id.atlassian.com/manage-profile/security/api-tokens
+   ```
+
+2. 使用你的 Porsche Digital / Atlassian 账号登录。
+3. 在页面中找到 **API tokens** 区域。
+4. 点击 **Create API token**。
+5. 在 **Label** 中填写一个容易识别的名称，例如：
+
+   ```text
+   VS Code UX Skill MCP
+   ```
+
+6. 点击 **Create**。
+7. 页面会显示新 token。点击 **Copy**，先临时保存在安全位置。
+
+注意：token 只会完整显示一次。如果关掉页面后忘记复制，需要重新创建一个。
+
+### 3. 配置 Jira `.env`
 
 复制环境变量模板：
 
@@ -53,7 +71,13 @@ https://id.atlassian.com/manage-profile/security/api-tokens
 cp mcp-servers/atlassian-server/.env.example mcp-servers/atlassian-server/.env
 ```
 
-填写：
+打开这个文件：
+
+```text
+mcp-servers/atlassian-server/.env
+```
+
+填写三项：
 
 ```env
 ATLASSIAN_HOST=porschedigital.atlassian.net
@@ -61,9 +85,15 @@ ATLASSIAN_EMAIL=your-email@porsche.digital
 ATLASSIAN_API_TOKEN=your-api-token
 ```
 
-注意：不要提交 `.env`。
+填写说明：
 
-### 3. 安装 Jira MCP server 依赖
+- `ATLASSIAN_HOST` 不要加 `https://`。
+- `ATLASSIAN_EMAIL` 使用你能打开 Jira issue 的 Atlassian 邮箱。
+- `ATLASSIAN_API_TOKEN` 粘贴第 2 步创建的 token。
+
+不要提交 `.env`。本仓库已经通过 `.gitignore` 忽略 `.env`。
+
+### 4. 安装 Jira MCP server 依赖
 
 ```bash
 cd mcp-servers/atlassian-server
@@ -71,7 +101,7 @@ npm install
 cd ../..
 ```
 
-### 4. 刷新 VS Code MCP
+### 5. 刷新 VS Code MCP
 
 本仓库已经包含 workspace 级 MCP 配置：
 
@@ -97,7 +127,7 @@ MCP: Restart Servers
 MCP: List Servers
 ```
 
-### 5. 测试 Jira 是否可读
+### 6. 测试 Jira 是否可读
 
 在 Copilot / Agent chat 中输入：
 
@@ -107,7 +137,7 @@ Use the atlassian MCP server to read Jira issue CARTS-7329.
 
 如果可以读到，再换成你的目标 Jira 卡号。
 
-### 6. 测试 Figma 是否可读
+### 7. 测试 Figma 是否可读
 
 确保你的 Figma 账号可以打开目标文件或节点链接。
 
@@ -119,7 +149,7 @@ Use the Figma MCP server to inspect this Figma link: <figma-url>.
 
 如果 Figma 要求授权，按 VS Code / Figma 的授权提示完成即可。
 
-### 7. 运行完整 UX workflow
+### 8. 运行完整 UX workflow
 
 可以使用下面的 prompt：
 
@@ -195,64 +225,6 @@ output/<jira-key>-ux-review.md
 - Mock mode 和 Real API mode 必须明确区分。
 - Real API mode 如果读取失败，必须停止并说明原因，不能静默回退到 mock 数据。
 
-## VS Code MCP 配置说明
-
-本仓库包含一个本地 Atlassian MCP server，用于读取 Jira：
-
-```text
-mcp-servers/atlassian-server/
-```
-
-### 1. 配置 Jira 凭证
-
-复制模板：
-
-```bash
-cp mcp-servers/atlassian-server/.env.example mcp-servers/atlassian-server/.env
-```
-
-填写：
-
-```env
-ATLASSIAN_HOST=porschedigital.atlassian.net
-ATLASSIAN_EMAIL=your-email@porsche.digital
-ATLASSIAN_API_TOKEN=your-api-token
-```
-
-不要提交 `.env`。
-
-### 2. 安装依赖
-
-```bash
-cd mcp-servers/atlassian-server
-npm install
-```
-
-### 3. 在 VS Code 中使用
-
-workspace MCP 配置位于：
-
-```text
-.vscode/mcp.json
-```
-
-它注册了：
-
-- `atlassian`：读取 Jira；
-- `figma`：读取 Figma MCP。
-
-安装依赖并填写 `.env` 后，重启 VS Code 或刷新 MCP servers。
-
-### 4. 测试 prompt
-
-```text
-Use the atlassian MCP server to read Jira issue CARTS-1234.
-```
-
-```text
-Use the Figma MCP server to inspect this Figma link: <url>.
-```
-
 ## 常见问题
 
 ### Jira MCP 读不到卡片
@@ -261,9 +233,21 @@ Use the Figma MCP server to inspect this Figma link: <url>.
 
 - `mcp-servers/atlassian-server/.env` 是否存在；
 - `ATLASSIAN_HOST` 是否没有包含 `https://`；
-- Atlassian token 是否属于能在浏览器打开该 Jira issue 的账号；
+- `ATLASSIAN_EMAIL` 是否是能打开该 Jira issue 的账号；
+- Atlassian API token 是否已经复制完整，没有多余空格或引号；
 - 是否已经在 `mcp-servers/atlassian-server` 下运行过 `npm install`；
 - 配置后是否重载过 VS Code。
+
+### 找不到 API token 页面
+
+可以从 Atlassian 手动进入：
+
+1. 打开 `https://id.atlassian.com/`。
+2. 登录你的 Atlassian 账号。
+3. 进入 **Manage profile**。
+4. 打开 **Security**。
+5. 找到 **API tokens**。
+6. 点击 **Create API token**。
 
 ### Figma MCP 读不到文件
 
